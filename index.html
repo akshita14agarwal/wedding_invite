@@ -356,10 +356,7 @@ body {
 .event-card:nth-child(6) { --ribbon:#a02020; }
 
 .event-card::before {
-  content:'';
-  position:absolute; top:0; left:0; right:0; height:4px;
-  background:var(--ribbon,var(--gold));
-  transition:height .3s ease;
+display: none
 }
 .event-card:hover::before { height:6px; }
 
@@ -408,12 +405,7 @@ body {
   min-height:100vh;
 }
 .itinerary::before {
-  content:'';
-  position:absolute; inset:0;
-  background:
-    radial-gradient(ellipse 50% 40% at 20% 30%, rgba(212,168,67,0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 50% at 80% 70%, rgba(200,68,106,0.07) 0%, transparent 60%);
-  pointer-events:none;
+display: none;
 }
 
 .itin-head { text-align:center; margin-bottom:60px; }
@@ -536,7 +528,7 @@ body {
 /* ── RSVP ── */
 .rsvp {
   padding:60px 24px;
-  background: linear-gradient(160deg, #4a0a1a 0%, #7a1a1a 40%, #2a0a30 100%);
+  background: linear-gradient(160deg, #ddd19d 0%, #7a1a1a 40%, #d4d78a 100%);
   text-align:center; position:relative; overflow:hidden;
   min-height:100vh;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -570,7 +562,8 @@ body {
 .rsvp-btn {
   display:inline-flex; align-items:center; gap:14px;
   font-family:'Cinzel Decorative',serif; font-size:11px; letter-spacing:5px;
-  color:#0e0500; background:linear-gradient(135deg, var(--gold2), var(--gold), #b8860b);
+  background:linear-gradient(160deg, #977093 0%, #1d1521 40%, #030204 100%);
+  color:white;
   background-size:200% 100%;
   padding:18px 52px; text-decoration:none;
   transition:all .4s ease;
@@ -605,7 +598,7 @@ footer {
 .footer-names {
   font-family:'Cormorant Garamond',serif;
   font-size:32px; font-style:italic; margin-bottom:14px;
-  background:linear-gradient(135deg,var(--gold3),var(--gold2),var(--gold));
+  background:linear-gradient(135deg, #f009b4, #814e7d, #763e73);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
 }
 .footer-line { width:120px; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:18px auto; }
@@ -648,37 +641,58 @@ footer {
   <div class="starfield" id="stars"></div>
   <div class="aurora"></div>
 
-  <!-- Centered clear photo above names -->
   <div class="hero-photo-frame">
     <img src="./images/WhatsApp Image 2026-03-29 at 10.49.02 AM.jpeg" alt="Saurabh & Reshal" class="hero-photo" />
-  </div>
 
-  <p class="hero-eyebrow">A Sacred Union · 2026</p>
+    <!-- TEXT OVER IMAGE -->
+    <div class="hero-overlay">
+      <p class="hero-eyebrow">A Sacred Union · 2026</p>
 
-  <h1 class="hero-names">
-    <span class="n1">Saurabh</span>
-    <span class="amp-heart">♥</span>
-    <span class="n2">Reshal</span>
-  </h1>
-<style>
-.hero-photo-frame {
+      <h1 class="hero-names">
+        <span class="n1">Saurabh</span>
+        <span class="amp-heart">♥</span>
+        <!-- /* use and here*/ -->
+        <span class="n2">Reshal</span>
+      </h1>
+<style>.hero-photo-frame {
+  position: relative; /* IMPORTANT */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 18px;
-  margin-top: 10px;
 }
+
 .hero-photo {
-  width: min(340px, 60vw);
-  max-height: 320px;
+  width: min(1000px, 60vw);
+  max-height: 1200px;
   object-fit: cover;
   border-radius: 18px;
-  box-shadow: 0 6px 32px 0 rgba(60,30,10,0.18), 0 1.5px 8px 0 rgba(212,168,67,0.13);
-  border: 3px solid rgba(212,168,67,0.25);
-  background: #fff8f0;
+  box-shadow: 0 6px 32px rgba(255, 255, 255, 0.716);
+}
+
+/* OVERLAY TEXT */
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+/* Optional styling for readability */
+.hero-names {
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+.hero-eyebrow {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
 }
 </style>
-
   <p class="hero-sub">#rabh_ne_banaya_reshta</p>
 
   <div class="divider">
@@ -701,8 +715,10 @@ footer {
 <!-- ═══ INTRO ═══ -->
  
 <section class="intro">
-  <p class="section-eyebrow" style="color:var(--teal);">With Joy &amp; Gratitude</p>
-  <p class="intro-quote reveal">They found in each other a best friend, a home, and a forever.</p>
+   <strong>|| Shri Ganeshay Namah ||</strong><br><br>
+  <p class="intro-quote reveal">Guided by destiny and bounded by love, a new chapter begins</p>
+    <p class="section-eyebrow" style="color:var(--teal);">With Joy &amp; Gratitude</p>
+
   <!-- <p class="intro-text reveal">
     The Agarwal family warmly invites you to witness the moment we've all been waiting for —
     two magical days filled with love, laughter, music &amp; memories.<br><br>
@@ -711,9 +727,9 @@ footer {
   </p> -->
   <p class="intro-text reveal">
 
-  <strong>|| Shri Ganeshay Namah ||</strong><br><br>
+ 
 
-  Join us for two joyful days as we celebrate love, laughter, and new beginnings.<br>
+  Join us for two magical days as we celebrate love, laughter, and new beginnings.<br>
 
   <strong style="font-family: 'Cinzel Decorative', serif; font-size: 2em; color: var(--maroon);">Saurabh</strong><br>
   Grandson of <strong>Late Shri. Bansidhar Agarwal</strong> &amp; <strong>Late Smt. Parvati Devi Agarwal</strong><br>
@@ -725,7 +741,7 @@ footer {
   Granddaughter of <strong> Shri. Lallu Lal Medwala</strong> &amp; <strong> Smt. Girraj Devi</strong><br>
   Daughter of <strong>Shri. Ram Babu Agarwal</strong> &amp; <strong>Smt. Rekha Agarwal</strong><br>
 
-  as they begin their forever, together. 💫
+  as they step into a lifetime of love together.
 
 </p>
   <div class="families-row reveal">
@@ -885,9 +901,12 @@ footer {
 
 <section class="family-intro">
   <div class="family-head reveal">
-  <p class="section-eyebrow">Meet Our Families</p>
-  <h2 class="section-title">Family & Groom Party</h2>
-  
+   <p class="section-eyebrow" style="font-weight: bold; font-size: 24px;">
+  Meet Our Families
+</p>
+<h2 class="section-title" style=" font-style: italic;">
+  Groom Side
+</h2>
   </div>
 
   <div class="family-container">
@@ -952,8 +971,12 @@ footer {
 
 
 <section class="family-intro">
-  <p class="section-eyebrow">Meet Our Families</p>
-  <h2 class="section-title">Family & Bridal Party</h2>
+  <p class="section-eyebrow" style="font-weight: bold; font-size: 24px;">
+  Meet Our Families
+</p>
+<h2 class="section-title" style=" font-style: italic;">
+  Bride Side
+</h2>
 
   <div class="family-container">
 
@@ -1009,8 +1032,9 @@ footer {
 <!-- ═══ EVENTS ═══ -->
 <section class="events">
   <div class="events-head reveal">
-    <p class="section-eyebrow">The Celebrations</p>
-    <h2 class="section-title">Wedding Events</h2>
+     <p class="section-eyebrow" style="font-weight: bold; font-size: 24px;">
+  Symphony of Celebrations
+</p>
   </div>
 
   <div class="events-grid">
@@ -1020,7 +1044,8 @@ footer {
         <span class="card-emoji">🪔</span>
         <h3 class="card-name">Ganesh Nimantran</h3>
         <p class="card-time">9 AM Onwards</p>
-        <p class="card-desc">Auspicious prayers to Lord Ganesha to bless the wedding festivities with joy and harmony.</p>
+        <p class="card-desc"> With Bappa’s blessings, we take the first step,
+Into a celebration where memories are kept.</p> 
         <span class="card-dress">Traditional Attire</span>
         <div class="card-venue" style="font-size:12px;font-weight:600;color:var(--maroon);margin-top:10px;border-top:1.5px solid var(--gold2);padding-top:6px;letter-spacing:0.5px;">Venue: <span style="color:var(--gold2);font-weight:700;">Residence</span></div>
       </div>
@@ -1030,8 +1055,9 @@ footer {
         <span class="card-date">19 April · Sunday</span>
         <span class="card-emoji">🌿</span>
         <h3 class="card-name">Sakdi Bindayak</h3>
-        <p class="card-time">10 AM Onwards</p>
-        <p class="card-desc">A sacred ritual marking the beginning of the wedding celebrations with family and blessings.</p>
+        <p class="card-time">8 AM Onwards</p>
+        <p class="card-desc"> With rituals divine and traditions so bright<br>
+We seek Bappa’s grace to guide us right.</p>
         <span class="card-dress">Traditional Attire</span>
         <div class="card-venue" style="font-size:12px;font-weight:600;color:var(--maroon);margin-top:10px;border-top:1.5px solid var(--gold2);padding-top:6px;letter-spacing:0.5px;">Venue:<br><span style="color:var(--gold2);font-weight:700;">Residence</span></div>
 
@@ -1040,12 +1066,13 @@ footer {
     <div class="event-card reveal">
       <div class="card-inner">
         <span class="card-date">20th April · Monday</span>
-        <span class="card-emoji">🎡</span>
+        <span class="card-emoji">🪻</span>
         <h3 class="card-name">The Wedding Prom</h3>
         <p class="card-time">12 PM Onwards · Followed by Lunch</p>
-        <p class="card-desc">A carnival of colors, a lifetime of togetherness. Join us for an afternoon of joy &amp; festivities!</p>
-        <span class="card-dress">Sky Blue &amp; Pink Pastels</span>
-        <div class="card-venue" style="font-size:12px;font-weight:600;color:var(--maroon);margin-top:10px;border-top:1.5px solid var(--gold2);padding-top:6px;letter-spacing:0.5px;">Venue:<br><span style="color:var(--gold2);font-weight:700;">Arika Retreat, Poolside</span></div>
+        <p class="card-desc"> An afternoon of pastels, love and light.<br>
+Where love shines brighter with those we hold in our heart tight.</p>
+        <span class="card-dress">Pastels — gown for girls, shirt with white pants for men, elegant pastels for women.</span>
+        <div class="card-venue" style="font-size:12px;font-weight:600;color:var(--blue);margin-top:10px;border-top:1.5px solid var(--gold2);padding-top:6px;letter-spacing:0.5px;">Venue:<br><span style="color:var(--gold2);font-weight:700;">Arika Retreat, Poolside</span></div>
 
       </div>
     </div>
@@ -1056,7 +1083,8 @@ footer {
         <span class="card-emoji">💃</span>
         <h3 class="card-name">Sangeet Night</h3>
         <p class="card-time">7:30 PM · Followed by Dinner</p>
-        <p class="card-desc">Dance, dazzle &amp; celebrate the night away! A night of music, dance &amp; memories under the stars.</p>
+        <p class="card-desc">Let music and glam fill the night with delight,<br>
+As hearts dance together in joy so bright.</p>
         <span class="card-dress">Vibrant Into Western</span>
         <div class="card-venue" style="font-size:12px;font-weight:600;color:var(--maroon);margin-top:10px;border-top:1.5px solid var(--gold2);padding-top:6px;letter-spacing:0.5px;">Venue:<br><span style="color:var(--gold2);font-weight:700;">Arika Retreat, Banquet Hall</span></div>
 
@@ -1069,7 +1097,8 @@ footer {
         <span class="card-emoji">🌸</span>
         <h3 class="card-name">Chaak &amp; Bhaat</h3>
         <p class="card-time">11 AM Onwards · Followed by Lunch</p>
-        <p class="card-desc">"Where Mama's blessings become the most beautiful gift." A sacred and heartfelt morning ritual.</p>
+        <p class="card-desc"> Bound by rituals and love so true,<br>
+We celebrate traditions cherished through.</p>
         <span class="card-dress">Traditional Attire</span>
         <div class="card-venue" style="font-size:12px;font-weight:600;color:var(--maroon);margin-top:10px;border-top:1.5px solid var(--gold2);padding-top:6px;letter-spacing:0.5px;">Venue:<br><span style="color:var(--gold2);font-weight:700;">Arika Retreat, Banquet Hall</span></div>
       </div>
@@ -1081,8 +1110,9 @@ footer {
         <span class="card-emoji">🥁</span>
         <h3 class="card-name">Nikasi</h3>
         <p class="card-time">7:00 PM Onwards</p>
-        <p class="card-desc">Get ready to dance and celebrate as the groom’s Nikasi fills the air with energy and excitement!</p>
-        <span class="card-dress">Traditional Attire</span>
+        <p class="card-desc"> With dhol and beats, the baraat sets its way,<br>
+Bringing joy and excitement to this special day.</p>
+        <span class="card-dress">Royal Traditional</span>
         <div class="card-venue" style="font-size:12px;font-weight:600;color:var(--maroon);margin-top:10px;border-top:1.5px solid var(--gold2);padding-top:6px;letter-spacing:0.5px;">Venue:<br><span style="color:var(--gold2);font-weight:700;">Arika Retreat, Front Lawn</span></div>
       </div>
     </div>
@@ -1092,9 +1122,11 @@ footer {
         <span class="card-date">21st April · Tuesday</span>
         <span class="card-emoji">🥁</span>
         <h3 class="card-name">Baraat Swagat</h3>
-        <p class="card-time">8:30 PM Onwards</p>
-        <p class="card-desc">Live DJ · Dhol · Nonstop Beats. Dance your way to the mandap — the party starts on the road!</p>
-        <span class="card-dress">Traditional Attire</span>
+        <p class="card-time">8:30 PM Onwards.<br>
+          Followed by Reception </p>
+        <p class="card-desc">With warmth and smiles, we welcome the parade,<br>
+Where two families meet and memories are made.</p>
+        <span class="card-dress">Royal Traditional</span>
         <div class="card-venue" style="font-size:12px;font-weight:600;color:var(--maroon);margin-top:10px;border-top:1.5px solid var(--gold2);padding-top:6px;letter-spacing:0.5px;">Venue:<br><span style="color:var(--gold2);font-weight:700;">Arika Retreat, Front Lawn</span></div>
       </div>
     </div>
@@ -1105,8 +1137,9 @@ footer {
         <span class="card-emoji">🔥</span>
         <h3 class="card-name">Pheras</h3>
         <p class="card-time">Midnight</p>
-        <p class="card-desc">With every step around the sacred fire, an eternal promise is made. The holiest moment of all.</p>
-        <span class="card-dress">Traditional Attire</span>
+        <p class="card-desc"> Around the sacred fire, vows forever we take,<br>
+A bond of love and trust that nothing can break.</p>
+        <span class="card-dress">Royal Traditional</span>
         <div class="card-venue" style="font-size:12px;font-weight:600;color:var(--maroon);margin-top:10px;border-top:1.5px solid var(--gold2);padding-top:6px;letter-spacing:0.5px;">Venue:<br><span style="color:var(--gold2);font-weight:700;">Arika Retreat, Poolside</span></div>
 
       </div>
@@ -1117,15 +1150,18 @@ footer {
 <!-- ═══ TIMELINE ═══ -->
 <section class="itinerary">
   <div class="itin-head reveal">
-    <p class="section-eyebrow">Complete Schedule</p>
-    <h2 class="section-title">Wedding Itinerary</h2>
+    <p class="section-eyebrow" style="font-weight: bold; font-size: 24px;">
+  Wedding Itinerary
+</p>
+  
+    
   </div>
 
   <div class="timeline">
     <div class="tl-day"><span class="tl-day-pill">20th April · Monday</span></div>
 
     <div class="tl-item"><div class="tl-content"><p class="tl-time">10:00 AM</p><p class="tl-ev">Check-In</p><p class="tl-note">Arrive &amp; settle in</p></div><div class="tl-dot"></div></div>
-    <div class="tl-item"><div class="tl-content"><p class="tl-time">12:00 PM</p><p class="tl-ev">Carnival Ceremony</p><p class="tl-note">Followed by Lunch</p></div><div class="tl-dot"></div></div>
+    <div class="tl-item"><div class="tl-content"><p class="tl-time">12:00 PM</p><p class="tl-ev">The Wedding Prom</p><p class="tl-note">Followed by Lunch</p></div><div class="tl-dot"></div></div>
     <div class="tl-item"><div class="tl-content"><p class="tl-time">7:30 PM</p><p class="tl-ev">Sangeet Night</p><p class="tl-note">Followed by Dinner</p></div><div class="tl-dot"></div></div>
 
     <div class="tl-day" style="margin-top:50px;"><span class="tl-day-pill">21st April · Tuesday</span></div>
@@ -1133,10 +1169,10 @@ footer {
     <div class="tl-item"><div class="tl-content"><p class="tl-time">8:00 AM</p><p class="tl-ev">Breakfast</p></div><div class="tl-dot"></div></div>
     <div class="tl-item"><div class="tl-content"><p class="tl-time">11:00 AM</p><p class="tl-ev">Chaak &amp; Bhaat</p><p class="tl-note">Rituals · Followed by Lunch</p></div><div class="tl-dot"></div></div>
     <div class="tl-item"><div class="tl-content"><p class="tl-time">7:00 PM</p><p class="tl-ev">Nikasi</p><p class="tl-note">Live DJ · Dhol · Nonstop Beats</p></div><div class="tl-dot"></div></div>
-    <div class="tl-item"><div class="tl-content"><p class="tl-time">8:30 PM</p><p class="tl-ev">Baraat Swagat</p><p class="tl-note">Live DJ · Dhol · Nonstop Beats</p></div><div class="tl-dot"></div></div>
+    <div class="tl-item"><div class="tl-content"><p class="tl-time">8:30 PM</p><p class="tl-ev">Baraat Swagat</p><p class="tl-note">Groom Side Welcome</p></div><div class="tl-dot"></div></div>
     <div class="tl-item"><div class="tl-content"><p class="tl-time">9:00 PM</p><p class="tl-ev">Varmala Ceremony</p></div><div class="tl-dot"></div></div>
-    <div class="tl-item"><div class="tl-content"><p class="tl-time">9:30 PM</p><p class="tl-ev">Dinner</p></div><div class="tl-dot"></div></div>
-    <div class="tl-item"><div class="tl-content"><p class="tl-time">Midnight</p><p class="tl-ev">Phere Ceremony</p><p class="tl-note">Under the Grace of Shining Stars</p></div><div class="tl-dot"></div></div>
+    <div class="tl-item"><div class="tl-content"><p class="tl-time">9:30 PM</p><p class="tl-ev">Reception</p></div><div class="tl-dot"></div></div>
+    <div class="tl-item"><div class="tl-content"><p class="tl-time">Midnight</p><p class="tl-ev">Pheras</p><p class="tl-note">Under the Grace of Shining Stars</p></div><div class="tl-dot"></div></div>
 
     <!-- <div class="tl-day" style="margin-top:50px;"><span class="tl-day-pill">22nd April · Wednesday</span></div>
 
@@ -1278,25 +1314,52 @@ footer {
 }
 </style>
 
+<section style="text-align:center; padding: 40px 20px;">
+
+  <!-- Section Title -->
+   <p class="section-eyebrow" style="font-weight: bold; font-size: 24px;">
+ Glimpses from Our Roka Ceremony
+</p>
+  <!-- Collage Grid -->
+  <div style="
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  ">
+
+    <img src="./images/roka1.jpg" style="width:100%; border-radius:12px;">
+    <img src="./images/roka2.jpg" style="width:100%; border-radius:12px;">
+    <img src="./images/roka3.jpg" style="width:100%; border-radius:12px;">
+
+    <img src="./images/roka4.jpg" style="width:100%; border-radius:12px;">
+    <img src="./images/roka5.jpg" style="width:100%; border-radius:12px;">
+    <img src="./images/roka6.jpg" style="width:100%; border-radius:12px;">
+
+  </div>
+
+</section>
+
 
 <!-- ═══ RSVP ═══ -->
 <section class="rsvp">
   <!-- floating particles -->
   <div class="rsvp-particle" style="width:80px;height:80px;left:8%;top:20%;animation-duration:7s;"></div>
-  <div class="rsvp-particle" style="width:50px;height:50px;right:12%;top:40%;animation-duration:5s;animation-delay:1s;background:rgba(200,68,106,0.1);"></div>
-  <div class="rsvp-particle" style="width:120px;height:120px;left:60%;top:10%;animation-duration:9s;animation-delay:2s;background:rgba(42,122,184,0.07);"></div>
+  <div class="rsvp-particle" style="width:50px;height:50px;right:12%;top:40%;animation-duration:5s;animation-delay:1s;background:rgba(208, 198, 148, 0.1);"></div>
+  <div class="rsvp-particle" style="width:120px;height:120px;left:60%;top:10%;animation-duration:9s;animation-delay:2s;background:rgba(125, 164, 170, 0.07);"></div>
   <div class="rsvp-particle" style="width:60px;height:60px;left:25%;top:70%;animation-duration:6s;animation-delay:0.5s;"></div>
 
-  <p class="section-eyebrow reveal">Kindly Respond</p>
   <h2 class="section-title reveal">RSVP</h2>
   <p class="rsvp-text reveal">
-    Aap ke aane se hi yeh mehfil mukammal hogi. 🙏<br>
-    Your presence would mean the world to us.
+    Your presence will make our celebration complete,<br>
+Turning every moment into a memory so sweet. <br><br>
+Please grace us with your presence and confirm your arrival by clicking on the below link.
   </p>
-  <a href="https://wa.me/9950754850?text=Namaste!%20I%20would%20like%20to%20RSVP%20for%20Saurabh%20%26%20Reshal's%20wedding." target="_blank" class="rsvp-btn">
+
+  <a href="https://wa.me/8741917114?text=Namaste!%20I%20would%20like%20to%20RSVP%20for%20Saurabh%20%26%20Reshal's%20wedding." target="_blank" class="rsvp-btn">
     RSVP on WhatsApp ✦
   </a>
-  <p class="rsvp-note">Please RSVP at the earliest</p>
+  <p class="rsvp-note">#rabh-ne-banaya-reshta</p>
 </section>
 
 <!-- ═══ FOOTER ═══ -->
@@ -1312,10 +1375,10 @@ footer {
 <footer>
 
   <!-- Existing Content -->
-  <p class="footer-names">Saurabh ♥ Reshal</p>
+  <p class="footer-names">Saurabh &Reshal</p>
   <p class="footer-hash">#rabh_ne_banaya_reshta</p>
   <div class="footer-line"></div>
-  <p class="footer-by">With love &amp; blessings · The Agarwal Families</p>
+  <p class="footer-by">With love &amp; blessings<br>- Agarwal Families</p>
 
   <!-- ✨ Wishes Section -->
   <div class="wishes-box">
@@ -1337,7 +1400,7 @@ function sendWish() {
     return;
   }
 
-  const phone = "9950754850"; // 👉 PUT YOUR NUMBER (without +)
+  const phone = "9680508976"; // OUR NUMBER (without +)
   const finalMsg = "My wishes for Saurabh & Reshal:\n\n" + msg;
 
   const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(finalMsg);
@@ -1357,8 +1420,8 @@ footer {
 }
 
 .footer-names {
-  font-size: 2.3rem;
-  color: #5a3e36;
+  font-size: 2.5rem;
+  color: #b369a8;
 }
 
 .footer-hash {
@@ -1369,7 +1432,7 @@ footer {
 .footer-line {
   width: 70px;
   height: 2px;
-  background: gold;
+  background: rgb(192, 104, 154);
   margin: 15px auto;
 }
 
