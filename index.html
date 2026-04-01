@@ -1676,10 +1676,18 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 
 <script>
-  document.getElementById("entry-screen").addEventListener("click", function () {
-    document.getElementById("bg-music").play();
-    this.style.display = "none";
+document.addEventListener("DOMContentLoaded", function () {
+
+  const entryScreen = document.getElementById("entry-screen");
+  const music = document.getElementById("bg-music");
+
+  entryScreen.addEventListener("click", function () {
+    music.currentTime = 4.5;  // ⬅️ start from 4.5 seconds
+    music.play().catch(err => console.log(err));
+    entryScreen.style.display = "none";
   });
+
+});
 </script>
 </body>
 </html>
