@@ -642,12 +642,16 @@ footer {
   <span>A Celebration of Love & Togetherness</span>
   <span>Join Us Inside</span>
 </p>
-    <p>Tap to Begin the Celebration 💖</p>
+<p class="tap-btn">Tap to Begin the Celebration 💖</p>
   </div>
 </div>
 <audio id="bg-music" loop>
-  <source src="song.mp3" type="audio/mpeg">
+  <source src="sajna.mp3" type="audio/mpeg">
 </audio>
+
+
+
+
 
 
 <!-- Floating petals -->
@@ -677,7 +681,40 @@ footer {
         <!-- /* use and here*/ -->
         <span class="n2">Reshal</span>
       </h1>
-<style>.hero-photo-frame {
+<style>
+
+  .tap-btn {
+  display: inline-block;
+  margin-top: 18px;
+
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  color: #c8446a;
+  font-style: italic;
+
+  position: relative;
+  cursor: pointer;
+}
+
+/* animated underline */
+.tap-btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c8446a, transparent);
+  transform: translateX(-50%);
+  transition: width 0.4s ease;
+}
+
+.tap-btn:hover::after {
+  width: 100%;
+}
+
+
+.hero-photo-frame {
   position: relative; /* IMPORTANT */
   display: flex;
   justify-content: center;
@@ -1260,8 +1297,8 @@ A bond of love and trust that nothing can break.</p>
   width: 100%;
   height: 100%;
 
-  background: url("./images/bg.jpeg") no-repeat center;
-  background-size: contain;
+  background: url("./images/entry.jpeg") no-repeat center;
+  background-size: cover;
 
   opacity: 0.95;
 }
@@ -1270,11 +1307,16 @@ A bond of love and trust that nothing can break.</p>
   z-index: 2;
   text-align: center;
 
-  margin-left: 150px; /* keeps it beside glass */
-  padding: 10px;
+  margin: 0;              /* ❌ remove left shift */
+  padding: 20px;
 
-  color: #c07aa6; /* soft romantic pink */
-  font-family: "Georgia", "Times New Roman", serif;
+  position: absolute;
+  top: 20%;               /* 🔥 controls height (move up/down) */
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 80%;
+  color: #c07aa6;
 }
 
 /* MAIN LINES */
@@ -1683,7 +1725,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const music = document.getElementById("bg-music");
 
   entryScreen.addEventListener("click", function () {
-    music.currentTime = 4.5;  // ⬅️ start from 4.5 seconds
+    music.currentTime = 70;  // ⬅️ start from 70 seconds
     music.play().catch(err => console.log(err));
     entryScreen.style.display = "none";
   });
