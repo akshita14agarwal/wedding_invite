@@ -683,11 +683,11 @@ footer {
       </h1>
 <style>
 
-  .tap-btn {
+ .tap-btn {
   display: inline-block;
   margin-top: 18px;
 
-  font-size: 0.95rem;
+  font-size: 1rem;
   letter-spacing: 1px;
   color: #c8446a;
   font-style: italic;
@@ -696,21 +696,23 @@ footer {
   cursor: pointer;
 }
 
-/* animated underline */
+/* ALWAYS visible underline */
 .tap-btn::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -4px;
-  width: 0%;
+  bottom: -5px;
+  width: 60%;   /* already visible */
   height: 1px;
   background: linear-gradient(90deg, transparent, #c8446a, transparent);
   transform: translateX(-50%);
-  transition: width 0.4s ease;
+  animation: underlinePulse 2s ease-in-out infinite;
 }
 
-.tap-btn:hover::after {
-  width: 100%;
+/* subtle animation so it pops */
+@keyframes underlinePulse {
+  0%, 100% { width: 50%; opacity: 0.6; }
+  50% { width: 80%; opacity: 1; }
 }
 
 
